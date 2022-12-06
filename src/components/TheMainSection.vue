@@ -1,6 +1,17 @@
 <template>
     <section>
         <div class="my-alert text-white fw-bold p-3">Found 62 characters</div>
+        <div class="row row-cols-1 row-cols-md-5 g-4 mt-3">
+            <div v-for="singleCharacter in store.charactersList" class="col">
+                <div class="card">
+                    <img :src="singleCharacter.image" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{singleCharacter.name}}</h5>
+                        <p class="card-text">{{singleCharacter.status}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
@@ -16,19 +27,20 @@ export default {
         }
     },
     created() {
-    axios.get("https://rickandmortyapi.com/api/character")
-      .then((resp) => {
-        this.ajaxError = "";
-        console.log(resp);
-        /* this.store.charactersList = resp.data.results; */
-      })
-/*       .catch((error) => {
-        console.log(error);
-        console.log("Codice errore: ", error.response.status);
-        this.ajaxError ="A causa di un errore, l'operazione non è andata a buon fine";
-        this.store.loading = false;
-      }); */
-  },
+        axios.get("https://rickandmortyapi.com/api/character")
+            .then((resp) => {
+                this.ajaxError = "";
+                console.log(resp);
+                this.store.charactersList = resp.data.results;
+                console.log(resp.data.results)
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log("Codice errore: ", error.response.status);
+                this.ajaxError = "Sì sono verificati degli errori";
+                this.store.loading = false;
+            });
+    },
 }
 </script>
 

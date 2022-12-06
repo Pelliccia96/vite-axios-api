@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="my-alert text-white fw-bold p-3">Found 62 characters</div>
+        <div class="my-alert text-white fw-bold p-3">Found {{store.paginationInfo.pages}} characters</div>
         <div class="row row-cols-1 row-cols-md-5 g-4 mt-3">
             <div v-for="singleCharacter in store.charactersList" class="col">
                 <div class="card">
@@ -33,6 +33,8 @@ export default {
                 console.log(resp);
                 this.store.charactersList = resp.data.results;
                 console.log(resp.data.results)
+                this.store.paginationInfo = resp.data.info;
+                console.log(resp.data.info)
             })
             .catch((error) => {
                 console.log(error);

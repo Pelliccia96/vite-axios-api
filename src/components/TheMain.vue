@@ -14,12 +14,16 @@
                     <option selected>Select category</option>
                 </select>
             </div>
+            <TheMainSection></TheMainSection>
         </div>
     </main>
 </template>
 
 <script>
+import TheMainSection from './TheMainSection.vue';
+
 export default {
+    components: { TheMainSection }
 }
 </script>
 

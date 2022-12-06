@@ -5,7 +5,30 @@
 </template>
 
 <script>
+import axios from "axios";
+import { store } from "../store"
+
 export default {
+    data() {
+        return {
+            ajaxError: "",
+            store,
+        }
+    },
+    created() {
+    axios.get("https://rickandmortyapi.com/api/character")
+      .then((resp) => {
+        this.ajaxError = "";
+        console.log(resp);
+        /* this.store.charactersList = resp.data.results; */
+      })
+/*       .catch((error) => {
+        console.log(error);
+        console.log("Codice errore: ", error.response.status);
+        this.ajaxError ="A causa di un errore, l'operazione non è andata a buon fine";
+        this.store.loading = false;
+      }); */
+  },
 }
 </script>
 

@@ -1,6 +1,7 @@
 <template>
     <section>
         <div class="my-alert text-white fw-bold p-3">Found {{store.paginationInfo.pages}} characters</div>
+        <div v-if="(ajaxError !== '')" class="alert alert-danger mt-5">{{ajaxError}}</div>
         <div class="row row-cols-1 row-cols-md-5 g-4 mt-3">
             <div v-for="singleCharacter in store.charactersList" class="col">
                 <div class="card bg-dark">
@@ -39,8 +40,7 @@ export default {
             .catch((error) => {
                 console.log(error);
                 console.log("Codice errore: ", error.response.status);
-                this.ajaxError = "Sì sono verificati degli errori";
-                this.store.loading = false;
+                this.ajaxError = "Si sono verificati degli errori, impossibile caricare la pagina. / " + error;
             });
     },
 }

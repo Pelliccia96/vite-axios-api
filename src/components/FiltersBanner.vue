@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { store, fetchCharacters } from "../store";
+import { store } from "../store";
 export default {
     data() {
         return {

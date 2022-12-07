@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex gap-3 justify-content-center">
+        <div class="d-flex justify-content-center">
             <button class="btn btn-info fw-bold">Cerca</button>
         </div>
     </form>
